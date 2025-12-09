@@ -27,6 +27,15 @@ class FormationsController extends AbstractController {
      */
     private $categorieRepository;
     
+    /**
+     * constant pour enregistrer URL de la page formations
+     */
+    const PAGEFORMATIONS = "pages/formations.html.twig";
+    /**
+     * constant pour enregistrer URL de la page formation
+     */
+    const PAGEFORMATION = "pages/formations.html.twig";
+    
     function __construct(FormationRepository $formationRepository, CategorieRepository $categorieRepository) {
         $this->formationRepository = $formationRepository;
         $this->categorieRepository= $categorieRepository;
@@ -36,7 +45,7 @@ class FormationsController extends AbstractController {
     public function index(): Response{
         $formations = $this->formationRepository->findAll();
         $categories = $this->categorieRepository->findAll();
-        return $this->render("pages/formations.html.twig", [
+        return $this->render(self::PAGEFORMATIONS, [
             'formations' => $formations,
             'categories' => $categories
         ]);
@@ -46,7 +55,7 @@ class FormationsController extends AbstractController {
     public function sort($champ, $ordre, $table=""): Response{
         $formations = $this->formationRepository->findAllOrderBy($champ, $ordre, $table);
         $categories = $this->categorieRepository->findAll();
-        return $this->render("pages/formations.html.twig", [
+        return $this->render(self::PAGEFORMATIONS, [
             'formations' => $formations,
             'categories' => $categories
         ]);
@@ -57,7 +66,7 @@ class FormationsController extends AbstractController {
         $valeur = $request->get("recherche");
         $formations = $this->formationRepository->findByContainValue($champ, $valeur, $table);
         $categories = $this->categorieRepository->findAll();
-        return $this->render("pages/formations.html.twig", [
+        return $this->render(self::PAGEFORMATIONS, [
             'formations' => $formations,
             'categories' => $categories,
             'valeur' => $valeur,
@@ -68,7 +77,7 @@ class FormationsController extends AbstractController {
     #[Route('/formations/formation/{id}', name: 'formations.showone')]
     public function showOne($id): Response{
         $formation = $this->formationRepository->find($id);
-        return $this->render("pages/formation.html.twig", [
+        return $this->render(self::PAGEFORMATION, [
             'formation' => $formation
         ]);        
     }   

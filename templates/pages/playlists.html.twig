@@ -16,6 +16,7 @@
                         </div>
                     </form>                    
                 </th>
+                
                 <th class="text-left align-top" scope="col">
                     catégories
                     <form class="form-inline mt-1" method="POST" action="{{ path('playlists.findallcontain', {champ:'id', table:'categories'}) }}">
@@ -32,9 +33,16 @@
                         </select>                    
                     </form>            
                 </th>
+                <!-- mission1 tache2_ajout un column -->
+                <th class="text-center align-top" scope="col">
+                    NB de formation<br />
+                   <a href="{{ path('playlists.sort', { champ: 'formation', ordre: 'ASC' }) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true"><</a>
+                   <a href="{{ path('playlists.sort', { champ: 'formation', ordre: 'DESC' }) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true">></a> 
+                </th>
                 <th class="text-center align-top" scope="col">
                     &nbsp;
-                </th>				
+                </th>
+                
             </tr>
         </thead>
         <tbody>
@@ -54,7 +62,11 @@
                                     &nbsp;{{ categories[c] }}                                  
                                 {% endfor %}
                             {% endif %}
-                        </td>            					
+                        </td>
+                        <!-- mission1 tache2 en cour de modification afin d'ffichage le nombre de formation-->
+                        <td class="text-center">
+                            {{ playlists[k].formations|length}}
+                        </td>
                         <td class="text-center">
                             <a href="{{ path('playlists.showone', {id:playlists[k].id}) }}" class="btn btn-secondary">Voir détail</a>
                         </td> 					
@@ -64,3 +76,5 @@
         </tbody>
     </table>
 {% endblock %}
+
+
