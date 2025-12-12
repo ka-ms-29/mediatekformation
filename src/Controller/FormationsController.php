@@ -34,7 +34,7 @@ class FormationsController extends AbstractController {
     /**
      * constant pour enregistrer URL de la page formation
      */
-    const PAGEFORMATION = "pages/formations.html.twig";
+    const PAGEFORMATION = "pages/formation.html.twig";
     
     function __construct(FormationRepository $formationRepository, CategorieRepository $categorieRepository) {
         $this->formationRepository = $formationRepository;

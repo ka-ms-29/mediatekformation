@@ -2,12 +2,13 @@
 {% block body %} 
     <table class="table table-striped" description="Liste des formations" >
         <thead>
+            
             <tr>
                 <th class="text-left align-top" scope="col">
                     formation<br />
                     <a href="{{ path('admin.formations.sort', {champ:'title', ordre:'ASC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true"><</a>
                     <a href="{{ path('admin.formations.sort', {champ:'title', ordre:'DESC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true">></a>
-                    <form class="form-inline mt-1" method="POST" action="{{ path('formations.findallcontain', {champ:'title'}) }}">
+                    <form class="form-inline mt-1" method="POST" action="{{ path('admin.formations.findallcontain', {champ:'title'}) }}">
                         <div class="form-group mr-1 mb-2">
                             <input type="text" class="sm" name="recherche" 
                                    value="{% if valeur|default and not table|default %}{{ valeur }}{% endif %}">
@@ -20,7 +21,7 @@
                     playlist<br />
                     <a href="{{ path('admin.formations.sort', {table:'playlist', champ:'name', ordre:'ASC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true"><</a>
                     <a href="{{ path('admin.formations.sort', {table:'playlist', champ:'name', ordre:'DESC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true">></a>
-                    <form class="form-inline mt-1" method="POST" action="{{ path('formations.findallcontain', {champ:'name', table:'playlist'}) }}">
+                    <form class="form-inline mt-1" method="POST" action="{{ path('admin.formations.findallcontain', {champ:'name', table:'playlist'}) }}">
                         <div class="form-group mr-1 mb-2">
                             <input type="text" class="sm" name="recherche" 
                                    value="{% if valeur|default and table|default and table=='playlist' %}{{ valeur }}{% endif %}">
@@ -54,8 +55,8 @@
                 <th class="text-center align-top" scope="col">
                     &nbsp;
                 </th>
-                <th class="text-center align-top" scope="col">
-                   <a href="#" class="btn btn-secondary mb-2">Ajouter</a>     
+                <th class="text-end align-top" scope="col">
+                   <a href="{{ path('admin.formation.ajout') }}" class="btn btn-primary">Ajouter</a>     
                 </th>
             </tr>
         </thead>
@@ -78,11 +79,11 @@
                     <td class="text-center">
                         {{ formation.publishedatstring }}
                     </td>
-                    <td class="text-center">
+                    <td class="text-end">
                         
                     </td>
-                    <td class="text-left">
-                        <a href="#" class="btn btn-secondary mb-2"> Editer </a> 
+                    <td class="text-end">
+                        <a href="{{ path('admin.formation.edit', {id:formation.id}) }}" class="btn btn-secondary mb-2"> Modifier </a> 
                         <a href="{{ path('admin.formation.suppr', {id:formation.id}) }}" class="btn btn-danger mb-2" onclick="return confirm('Etes-vous sur de vouloir supprimer {{formation.title}} ?')">Supprimer</a>
                         
                     </td>

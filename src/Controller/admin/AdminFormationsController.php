@@ -2,6 +2,8 @@
 
 namespace App\Controller\admin;
 
+use App\Entity\Formation;
+use App\Form\FormationType;
 use App\Repository\CategorieRepository;
 use App\Repository\FormationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -81,11 +83,49 @@ class AdminFormationsController extends AbstractController{
     
     #[Route('/admin/suppr/{id}', name: 'admin.formation.suppr')]
     public function suppr(int $id): Response{
-        $visite = $this->repository->find($id);
-        $this->repository->remove($visite);
-        return $this->redirectToRoute('admin.formatios');
+        $formation = $this->formationRepository->find($id);
+        $this->formationRepository->remove($formation);
+        return $this->redirectToRoute('admin.formations');
     }
 
+    
+    #[Route ('/admin/edit/{id}', name:'admin.formation.edit')]
+    public function edit(int $id, Request $request): Response{
+        $formation= $this->formationRepository->find($id);
+        $formFormation = $this->createForm(FormationType::class, $formation);
+        
+        $formFormation->handleRequest($request);
+        if($formFormation->isSubmitted() && $formFormation->isValid()){
+            $this->formationRepository->add($formation);
+            return $this->redirectToRoute('admin.formations');
+        }
+        
+        return $this->render("admin/admin.formation.edit.html.twig",[
+            'formation' => $formation,
+            'formformation' => $formFormation->createView()
+            ]);
+    }
+    /**
+     * 
+     * @param Request $request
+     * @return Response
+     */
+    #[Route('/admin/ajout', name: 'admin.formation.ajout')]
+    public function ajout(Request $request): Response{
+        $formation = new Formation();
+        $formFormation = $this->createForm(FormationType::class, $formation);
+
+        $formFormation->handleRequest($request);
+        if($formFormation->isSubmitted() && $formFormation->isValid()){
+            $this->formationRepository->add($formation);
+            return $this->redirectToRoute('admin.formations');
+        }
+
+        return $this->render("admin/admin.formation.ajout.html.twig", [
+            'formation' => $formation,
+            'formformation' => $formFormation->createView()
+        ]);
+    }
     /**
      * je suis pas sur de celui ci
      * @param type $id
