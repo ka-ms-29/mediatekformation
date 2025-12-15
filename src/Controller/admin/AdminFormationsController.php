@@ -126,18 +126,7 @@ class AdminFormationsController extends AbstractController{
             'formformation' => $formFormation->createView()
         ]);
     }
-    /**
-     * je suis pas sur de celui ci
-     * @param type $id
-     * @return Response
-     */
-    #[Route('/admin/formations/formation/{id}', name: 'admin.formations.showone')]
-    public function showOne($id): Response{
-        $formation = $this->formationRepository->find($id);
-        return $this->render(self::PAGEADMINFORMATION, [
-            'formation' => $formation
-        ]);        
-    }   
+      
     
 
 
