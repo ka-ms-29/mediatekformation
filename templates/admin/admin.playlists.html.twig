@@ -73,17 +73,14 @@
                         <td class="text-center">
                         <td class="text-end">
                         <a href="{{ path('admin.playlist.edit', {id:playlists[k].id}) }}" class="btn btn-secondary mb-2"> Modifier </a> 
-                        {% if playlists[k].formations|length == 0 %}
-                            <a href="{{ path('admin.playlist.suppr', {id:playlists[k].id}) }}" class="btn btn-danger mb-2" onclick="return confirm('Etes-vous sur de vouloir supprimer {{playlists[k].name}} ?')">Supprimer</a>
-                        {% else %}
-                            <button class="btn btn-danger mb-2" disabled title="Impossible de supprimer une playlist contenant des formations">Supprimer</button>
-                        {% endif %}                        
-                    
+                        <a href="{{ path('admin.playlist.suppr', {id:playlists[k].id}) }}" class="btn btn-danger mb-2" onclick="return confirm('Etes-vous sur de vouloir supprimer {{playlists[k].name}} ?')">Supprimer</a>
+                                              
                         </td> 					
                     </tr>
                 {% endfor %}	
             {% endif %}
         </tbody>
+        
     </table>
 {% endblock %}
 

@@ -108,4 +108,19 @@ class FormationRepository extends ServiceEntityRepository
                 ->getResult();        
     }
     
+    /**
+     * tache3_mission2
+     * @param int $idCategorie
+     * @return array
+     */
+    public function findAllForOneCategorie(int $idCategorie): array{
+        return $this->createQueryBuilder('f')
+        ->join('f.categories', 'c')
+        ->where('c.id = :id')
+        ->setParameter('id', $idCategorie)
+        ->getQuery()
+        ->getResult();
+        
+    }
+
 }

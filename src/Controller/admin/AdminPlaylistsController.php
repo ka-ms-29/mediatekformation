@@ -8,6 +8,7 @@
 namespace App\Controller\admin;
 
 use App\Entity\Playlist;
+
 use App\Form\PlaylistType;
 use App\Repository\CategorieRepository;
 use App\Repository\FormationRepository;
@@ -115,7 +116,11 @@ class AdminPlaylistsController extends AbstractController{
             'table' => $table
         ]);
     }
-    
+    /**
+     * 
+     * @param int $id
+     * @return Response
+     */
     #[Route('/admin/playlists/suppr/{id}', name: 'admin.playlist.suppr')]
     public function suppr(int $id): Response{
         $playlist = $this->playlistRepository->find($id);
@@ -128,7 +133,12 @@ class AdminPlaylistsController extends AbstractController{
         $this->addFlash('success','Playlist supprimée avec succès.');
         return $this->redirectToRoute('admin.playlists');
     }
-    
+    /**
+     * 
+     * @param int $id
+     * @param Request $request
+     * @return Response
+     */
     #[Route ('/admin/playlist/edit/{id}', name:'admin.playlist.edit')]
     public function edit(int $id, Request $request): Response{
         $playlist= $this->playlistRepository->find($id);
@@ -146,7 +156,11 @@ class AdminPlaylistsController extends AbstractController{
 
             ]);
     }
-    
+    /**
+     * 
+     * @param Request $request
+     * @return Response
+     */
     #[Route('/admin/playlist/ajout', name: 'admin.playlist.ajout')]
     public function ajout(Request $request): Response{
         $playlist = new Playlist();
