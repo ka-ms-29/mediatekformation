@@ -35,12 +35,19 @@ class FormationsController extends AbstractController {
      * constant pour enregistrer URL de la page formation
      */
     const PAGEFORMATION = "pages/formation.html.twig";
-    
+    /**
+     * constructeur de la class
+     * @param FormationRepository $formationRepository
+     * @param CategorieRepository $categorieRepository
+     */
     function __construct(FormationRepository $formationRepository, CategorieRepository $categorieRepository) {
         $this->formationRepository = $formationRepository;
         $this->categorieRepository= $categorieRepository;
     }
-    
+    /**
+     * @Route('/formations', name: 'formations')
+     * @return Response
+     */
     #[Route('/formations', name: 'formations')]
     public function index(): Response{
         $formations = $this->formationRepository->findAll();
@@ -51,6 +58,14 @@ class FormationsController extends AbstractController {
         ]);
     }
 
+    /**
+     * fonction pour faire trier 
+     * @Route('/formations/tri/{champ}/{ordre}/{table}', name: 'formations.sort')
+     * @param type $champ
+     * @param type $ordre
+     * @param type $table
+     * @return Response
+     */
     #[Route('/formations/tri/{champ}/{ordre}/{table}', name: 'formations.sort')]
     public function sort($champ, $ordre, $table=""): Response{
         $formations = $this->formationRepository->findAllOrderBy($champ, $ordre, $table);
@@ -61,6 +76,14 @@ class FormationsController extends AbstractController {
         ]);
     }     
 
+    /**
+     * fonction pour faire filtrer
+     * @Route('/formations/recherche/{champ}/{table}', name: 'formations.findallcontain')
+     * @param type $champ
+     * @param Request $request
+     * @param type $table
+     * @return Response
+     */
     #[Route('/formations/recherche/{champ}/{table}', name: 'formations.findallcontain')]
     public function findAllContain($champ, Request $request, $table=""): Response{
         $valeur = $request->get("recherche");
@@ -74,6 +97,11 @@ class FormationsController extends AbstractController {
         ]);
     }  
 
+    /**
+     * @Route('/formations/formation/{id}', name: 'formations.showone')
+     * @param type $id
+     * @return Response
+     */
     #[Route('/formations/formation/{id}', name: 'formations.showone')]
     public function showOne($id): Response{
         $formation = $this->formationRepository->find($id);

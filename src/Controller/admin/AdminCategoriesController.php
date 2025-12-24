@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 /**
- * Description of AdminCategoriesController
+ * AdminCategoriesController : pour gerer les demande de la page categorie partie back-office
  *
  * @author Mostaghfera Jan
  */
@@ -26,15 +26,22 @@ class AdminCategoriesController extends AbstractController{
      * @var CategorieRepository
      */
     private $categorieRepository;
-    
+    /**
+     * 
+     * @var FormationRepository
+     */
     private $formationRepository;
-    
+    /**
+     * constructeur 
+     * @param CategorieRepository $categorieRepository
+     * @param FormationRepository $formationRepository
+     */
     public function __construct(CategorieRepository $categorieRepository, FormationRepository $formationRepository) {
         $this->categorieRepository = $categorieRepository;
         $this->formationRepository = $formationRepository;
     }
     /**
-     * 
+     * @Route('/admin/categories', name:'admin.categories')
      * @return Response
      */
     #[Route('/admin/categories', name:'admin.categories')]
@@ -45,7 +52,8 @@ class AdminCategoriesController extends AbstractController{
         ]);
     }
     /**
-     * 
+     * fonction pour gerer la suppersion d'un categorie
+     * @Route('/admin/categorie/suppr/{id}', name : 'admin.categorie.suppr')
      * @param int $id
      * @return Response
      */
@@ -65,7 +73,8 @@ class AdminCategoriesController extends AbstractController{
     }
     
     /**
-     * 
+     * fonction pour gerer l'ajout d'un categorie
+     * @Route('/admin/categorie/ajout', name : 'admin.categorie.ajout')
      * @param Reques $request
      * @return Response
      */

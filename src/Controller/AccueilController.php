@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Description of AccueilController
+ * AccueilController : controller d'accueil
  *
  * @author emds
  */
@@ -19,13 +19,17 @@ class AccueilController extends AbstractController{
     private $repository;
     
     /**
-     * 
+     * constructeur de la class AcceuilController
      * @param FormationRepository $repository
      */
     public function __construct(FormationRepository $repository) {
         $this->repository = $repository;
     }   
     
+    /**
+     * @Route('/', name: 'accueil')
+     * @return Response
+     */
     #[Route('/', name: 'accueil')]
     public function index(): Response{
         $formations = $this->repository->findAllLasted(2);
@@ -34,6 +38,10 @@ class AccueilController extends AbstractController{
         ]); 
     }
     
+    /**
+     * @Route('/cgu', name: 'cgu')
+     * @return Response
+     */
     #[Route('/cgu', name: 'cgu')]
     public function cgu(): Response{
         return $this->render("pages/cgu.html.twig"); 
