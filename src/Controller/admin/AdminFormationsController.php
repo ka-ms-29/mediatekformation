@@ -86,7 +86,7 @@ class AdminFormationsController extends AbstractController{
      * @param type $table
      * @return Response
      */
-    #[Route('admin//formations/recherche/{champ}/{table}', name: 'admin.formations.findallcontain')]
+    #[Route('admin/formations/recherche/{champ}/{table}', name: 'admin.formations.findallcontain')]
     public function findAllContain($champ, Request $request, $table=""): Response{
         $valeur = $request->get("recherche");
         $formations = $this->formationRepository->findByContainValue($champ, $valeur, $table);

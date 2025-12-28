@@ -60,7 +60,7 @@ class FormationsControllerTest extends WebTestCase{
         $crawler = $client->submitForm('filtrer', ['recherche' => 'java']);		
         $this->assertCount(7, $crawler->filter('table tbody tr')); 
         $firstRowTitle = $crawler->filter(self::FIRSTROW)->text();
-        $this->assertSelectorTextContains('h5.text-info', $firstRowTitle);
+        $this->assertEquals('TP Android n°5 : code du controleur et JavaDoc', $firstRowTitle);
     }
     
     /**
@@ -72,6 +72,6 @@ class FormationsControllerTest extends WebTestCase{
         $crawler = $client->submitForm('Filtrer', ['recherche' => 'java']);		
         $this->assertCount(14, $crawler->filter('table tbody tr'));
         $firstRowTitle = $crawler->filter(self::FIRSTROW)->text();
-        $this->assertSelectorTextContains('h5.text-info', $firstRowTitle);
+        $this->assertEquals('Eclipse n°7 : Tests unitaires', $firstRowTitle);
     }
 }
