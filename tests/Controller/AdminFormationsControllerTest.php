@@ -31,6 +31,9 @@ class AdminFormationsControllerTest extends WebTestCase{
             ->findOneBy(['username' => 'admin']);
         $client->loginUser($admin);
     }
+    /**
+     * teste la tri des formation par nom
+     */
     public function testTriFormationNom(){        
         $client = static::createClient();
         $this->loginAsAdmin($client);
@@ -38,7 +41,9 @@ class AdminFormationsControllerTest extends WebTestCase{
         $firstRowTitle = $crawler->filter(self::FIRSTROW)->text();
         $this->assertEquals('Android Studio (complément n°1) : Navigation Drawer et Fragment', $firstRowTitle);
     }
-    
+    /**
+     * teste la tri des formation par playlist
+     */
     public function testtriFormationPlaylist(){
         $client = static::createClient();
         $this->loginAsAdmin($client);
@@ -46,7 +51,9 @@ class AdminFormationsControllerTest extends WebTestCase{
         $firstRowTitle = $crawler->filter(self::FIRSTROW)->text();
         $this->assertEquals('Bases de la programmation n°74 - POO : collections', $firstRowTitle);
     }
-    
+    /**
+     * teste la tri des formation par date_published
+     */
     public function testTriFormationDate(){       
         $client = static::createClient();
         $this->loginAsAdmin($client);        
@@ -54,7 +61,9 @@ class AdminFormationsControllerTest extends WebTestCase{
         $firstRowTitle = $crawler->filter(self::FIRSTROW)->text();
         $this->assertEquals("Cours UML (1 à 7 / 33) : introduction et cas d'utilisation", $firstRowTitle);
     }
-    
+    /**
+     * teste filtre des formation par nom
+     */
     public function testFiltreFormation(){
         $client = static::createClient();
         $this->loginAsAdmin($client);               
@@ -64,7 +73,9 @@ class AdminFormationsControllerTest extends WebTestCase{
         $firstRowTitle = $crawler->filter(self::FIRSTROW)->text();
         $this->assertEquals('TP Android n°5 : code du controleur et JavaDoc', $firstRowTitle);
     }
-    
+    /**
+     * teste filtre des formation par playlist
+     */
     public function testFiltrePlaylist(){
         $client = static::createClient();
         $this->loginAsAdmin($client);
@@ -74,7 +85,9 @@ class AdminFormationsControllerTest extends WebTestCase{
         $firstRowTitle = $crawler->filter(self::FIRSTROW)->text();
         $this->assertEquals('Eclipse n°7 : Tests unitaires', $firstRowTitle);
     }
-    
+    /**
+     * test bouton Modifier de la page /admin
+     */
     public function testButtonModifier(){
         $client = static::createClient();
         //faire login comme admin
@@ -88,7 +101,9 @@ class AdminFormationsControllerTest extends WebTestCase{
         $this->assertSelectorExists('h2');
         $this->assertSelectorTextContains('h2','Détail formation');
     }
-    
+    /**
+     * test bouton Ajouter de la page /admin
+     */
     public function testButtonAjouter(){
         $client = static::createClient();
         //faire login comme admin

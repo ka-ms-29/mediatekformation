@@ -16,7 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  */
 class LoginControllerTest extends WebTestCase{
     /**
-     * 
+     * test acces la page login 
      */
     public function testLoginPageLoads()
     {
@@ -26,7 +26,7 @@ class LoginControllerTest extends WebTestCase{
         $this->assertSelectorTextContains('h3', 'Authentifiez-vous');
     }
     /**
-     * 
+     * test login avec identifiant incorrecte
      */
     public function testLoginFailed(){
         $client = static::createClient();
@@ -42,6 +42,9 @@ class LoginControllerTest extends WebTestCase{
         $this->assertSelectorTextContains('body', 'Invalid credentials');
     }
     
+    /**
+     * test login avec identifiant correcte
+     */
     public function testSuccessfulLogin(){
         
         $client = static::createClient();

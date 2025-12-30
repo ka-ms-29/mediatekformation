@@ -22,7 +22,7 @@ class AdminPlaylistsControllerTest extends WebTestCase{
      */
     const FIRSTROW = 'table tbody tr:first-child td:first-child h5.text-info';
     /**
-     * test tri des playlist sur nom et ASC
+     * login en tant qu'admin
      */   
     private function loginAsAdmin($client)
     {
@@ -32,7 +32,7 @@ class AdminPlaylistsControllerTest extends WebTestCase{
         $client->loginUser($admin);
     }
     /**
-     * 
+     * test tri des playlists par nom et 'ASC'
      */
     public function testtriPlaylistParNom(){
         $client = static::createClient();
@@ -45,9 +45,9 @@ class AdminPlaylistsControllerTest extends WebTestCase{
         $this->assertEquals('Bases de la programmation (C#)', $firstRowTitle);
     }
     /**
-     * 
+     * test tri des playlist par nombre des formation
      */
-    public function testtriPlaylistParNBformation(){
+    public function testTriPlaylistParNBformation(){
         $client = static::createClient();
         //faire login comme admin
         $this->loginAsAdmin($client);
@@ -58,7 +58,7 @@ class AdminPlaylistsControllerTest extends WebTestCase{
         $this->assertEquals('Cours Informatique embarquée', $firstRowTitle);
     }
     /**
-     * 
+     * test filtre des playlist par nom saisie
      */
     public function testFiltrePlaylist(){
         $client = static::createClient();
@@ -87,7 +87,7 @@ class AdminPlaylistsControllerTest extends WebTestCase{
      */
     
     /**
-     * 
+     * test bouton Modifier de la page /admin/playlists
      */
     public function testButtonModifier(){
         $client = static::createClient();
@@ -103,7 +103,7 @@ class AdminPlaylistsControllerTest extends WebTestCase{
         $this->assertSelectorTextContains('h2','Détail playlist');
     }
     /**
-     * 
+     * test bouton Ajouter de la page /admin/playlists
      */
     public function testButtonAjouter(){
         $client = static::createClient();
