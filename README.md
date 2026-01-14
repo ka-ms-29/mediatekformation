@@ -10,10 +10,9 @@ https://github.com/CNED-SLAM/mediatekformation/blob/master/README.md
 Ce dépôt contient la présentation complète de l’application d’origine dans son README.<br>
 
 ## Fonctionnalités ajoutées et mode opératoire :
-Voici les 5 pages correspondant aux différents cas d’utilisation.
 ### Page Gestion des formations
-Cette page permet de gérer les formations disponibles sur la plateforme.
-Les fonctionnalités suivantes ont été ajoutées :
+Cette page permet de gérer les formations disponibles sur la plateforme.<br>
+Les fonctionnalités suivantes ont été ajoutées :<br>
 •	Ajout de nouvelles formations.<br>
 •	Modification des formations existantes.<br>
 •	Suppression des formations.<br>
@@ -28,8 +27,8 @@ Pour modifier une formation, l’administrateur clique sur le bouton Modifier co
 Pour supprimer une formation, l’administrateur doit cliquer sur le bouton Supprimer. Après validation d’un message de confirmation, la formation est supprimée et la liste des formations est automatiquement mise à jour.
 
 ### Page Gestion des playlists :
-Cette page permet de gérer les playlists.
-Les fonctionnalités suivantes ont été ajoutées :
+Cette page permet de gérer les playlists.<br>
+Les fonctionnalités suivantes ont été ajoutées :<br>
 •	Ajout de nouvelles playlist.<br>
 •	Modification des playlists existantes.<br>
 •	Suppression des playlists qui ne contient pas aucun formation.<br>
@@ -42,8 +41,8 @@ La suppression d’une playlist n’est possible que si celle-ci ne contient auc
 
 
 ### Page Gestion des catégories :
-Cette page permet de gérer les categories.
-Les fonctionnalités suivantes ont été ajoutées :
+Cette page permet de gérer les categories.<br>
+Les fonctionnalités suivantes ont été ajoutées :<br>
 •	Ajout de nouvelles categorie.<br>
 •	Suppression des categories qui n'est pas ataché au aucune formation.<br>
 <img width="945" height="376" alt="image" src="https://github.com/user-attachments/assets/4bb0e009-4047-449f-a3b8-a22bf02a4901" /><br>
