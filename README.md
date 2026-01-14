@@ -9,80 +9,49 @@ Le dépôt d’origine est disponible ici :
 https://github.com/CNED-SLAM/mediatekformation/blob/master/README.md
 Ce dépôt contient la présentation complète de l’application d’origine dans son README.<br>
 
-## Les différentes pages
+## Fonctionnalités ajoutées et mode opératoire :
 Voici les 5 pages correspondant aux différents cas d’utilisation.
-### Page 1 : l'accueil
-Cette page présente le fonctionnement du site et les 2 dernières vidéos mises en ligne.<br>
-La partie du haut contient une bannière (logo, nom et phrase présentant le but du site) et le menu permettant d'accéder aux 3 pages principales (Accueil, Formations, Playlists).<br>
-Le centre contient un texte de présentation avec, entre autres, les liens pour accéder aux 2 autres pages principales.<br>
-La partie basse contient les 2 dernières formations mises en ligne. Cliquer sur une image permet d'accéder à la page 3 de présentation de la formation.<br>
-Le bas de page contient un lien pour accéder à la page des CGU : ce lien est présent en bas de chaque page excepté la page des CGU.<br>
-![img2](https://github.com/user-attachments/assets/523b4233-3505-4b8c-9db0-5e7b72965bc6)
-### Page 2 : les formations
-Cette page présente les formations proposées en ligne (accessibles sur YouTube).<br>
-La partie haute est identique à la page d'accueil (bannière et menu).<br>
-La partie centrale contient un tableau composé de 5 colonnes :<br>
-•	La 1ère colonne ("formation") contient le titre de chaque formation.<br>
-•	La 2ème colonne ("playlist") contient le nom de la playlist dans laquelle chaque formation se trouve.<br>
-•	La 3ème colonne ("catégories") contient la ou les catégories concernées par chaque formation (langage…).<br>
-•	La 4ème colonne ("date") contient la date de parution de chaque formation.<br>
-•	LA 5ème contient la capture visible sur YouTube, pour chaque formation.<br>
-Au niveau des colonnes "formation", "playlist" et "date", 2 boutons permettent de trier les lignes en ordre croissant ("<") ou décroissant (">").<br>
-Au niveau des colonnes "formation" et "playlist", il est possible de filtrer les lignes en tapant un texte : seuls les lignes qui contiennent ce texte sont affichées. Si la zone est vide, le fait de cliquer sur "filtrer" permet de retrouver la liste complète.<br> 
-Au niveau de la catégorie, la sélection d'une catégorie dans le combo permet d'afficher uniquement les formations qui ont cette catégorie. Le fait de sélectionner la ligne vide du combo permet d'afficher à nouveau toutes les formations.<br>
-Par défaut la liste est triée sur la date par ordre décroissant (la formation la plus récente en premier).<br>
-Le fait de cliquer sur une miniature permet d'accéder à la troisième page contenant le détail de la formation.<br>
-![img3](https://github.com/user-attachments/assets/bc033cf9-41a5-4cad-a268-8abb400965c5)
-### Page 3 : détail d'une formation
-Cette page n'est pas accessible par le menu mais uniquement en cliquant sur une miniature dans la page "Formations" ou une image dans la page "Accueil".<br>
-La partie haute est identique à la page d'accueil (bannière et menu).<br>
-La partie centrale est séparée en 2 parties :<br>
-•	La partie gauche contient la vidéo qui peut être directement visible dans le site ou sur YouTube.<br>
-•	La partie droite contient la date de parution, le titre de la formation, le nom de la playlist, la liste des catégories et sa description détaillée.<br>
-![img4](https://github.com/user-attachments/assets/f41d05d8-5980-4dc4-9eb7-58d1c31b8a25)
-### Page 4 : les playlists
-Cette page présente les playlists.<br>
-La partie haute est identique à la page d'accueil (bannière et menu).<br>
-La partie centrale contient un tableau composé de 3 colonnes :<br>
-•	La 1ère colonne ("playlist") contient le nom de chaque playlist.<br>
-•	La 2ème colonne ("catégories") contient la ou les catégories concernées par chaque playlist (langage…).<br>
-•	La 3ème contient un bouton pour accéder à la page de présentation de la playlist.<br>
-Au niveau de la colonne "playlist", 2 boutons permettent de trier les lignes en ordre croissant ("<") ou décroissant (">"). Il est aussi possible de filtrer les lignes en tapant un texte : seuls les lignes qui contiennent ce texte sont affichées. Si la zone est vide, le fait de cliquer sur "filtrer" permet de retrouver la liste complète.<br> 
-Au niveau de la catégorie, la sélection d'une catégorie dans le combo permet d'afficher uniquement les playlists qui ont cette catégorie. Le fait de sélectionner la ligne vide du combo permet d'afficher à nouveau toutes les playlists.<br>
-Par défaut la liste est triée sur le nom de la playlist.<br>
-Cliquer sur le bouton "voir détail" d'une playlist permet d'accéder à la page 5 qui présente le détail de la playlist concernée.<br>
-![img5](https://github.com/user-attachments/assets/bbe8934f-8d4b-4da2-8216-60b96b726d8a)
-### Page 5 : détail d'une playlist
-Cette page n'est pas accessible par le menu mais uniquement en cliquant sur un bouton "voir détail" dans la page "Playlists".<br>
-La partie haute est identique à la page d'accueil (bannière et menu).<br>
-La partie centrale est séparée en 2 parties :<br>
-•	La partie gauche contient les informations de la playlist (titre, liste des catégories, description).<br>
-•	La partie droite contient la liste des formations contenues dans la playlist (miniature et titre) avec possibilité de cliquer sur une formation pour aller dans la page de la formation.<br>
-![img6](https://github.com/user-attachments/assets/f216a9e7-084a-4683-9b4e-cada5574a0e2)
-## La base de données
-La base de données exploitée par le site est au format MySQL.
-### Schéma conceptuel de données
-Voici le schéma correspondant à la BDD.<br>
-![img7](https://github.com/user-attachments/assets/f3eca694-bf96-4f6f-811e-9d11a7925e9e)
-<br>video_id contient le code YouTube de la vidéo, qui permet ensuite de lancer la vidéo à l'adresse suivante :<br>
-https://www.youtube.com/embed/<<<video_id>>>
-### Relations issues du schéma
-<code><strong>formation (id, published_at, title, video_id, description, playlist_id)</strong>
-id : clé primaire
-playlist_id : clé étrangère en ref. à id de playlist
-<strong>playlist (id, name, description)</strong>
-id : clé primaire
-<strong>categorie (id, name)</strong>
-id : clé primaire
-<strong>formation_categorie (id_formation, id_categorie)</strong>
-id_formation, id_categorie : clé primaire
-id_formation : clé étrangère en ref. à id de formation
-id_categorie : clé étrangère en ref. à id de categorie</code>
+### Page Gestion des formations
+Cette page permet de gérer les formations disponibles sur la plateforme.
+Les fonctionnalités suivantes ont été ajoutées :
+•	Ajout de nouvelles formations.<br>
+•	Modification des formations existantes.<br>
+•	Suppression des formations.<br>
+Ces fonctionnalités facilitent la gestion complète des formations pour les administrateurs.
+<img width="929" height="458" alt="image" src="https://github.com/user-attachments/assets/a687073a-4f3a-4a6b-8541-9e23d4a8a224" /><br>
 
-Remarques : 
-Les clés primaires des entités sont en auto-incrémentation.<br>
-Le chemin des images (des 2 tailles) n'est pas mémorisé dans la BDD car il peut être fabriqué de la façon suivante :<br>
-"https://i.ytimg.com/vi/" suivi de, soit "/default.jpg" (pour la miniature), soit "/hqdefault.jpg" (pour l'image plus grande de la page d'accueil).
+Pour ajouter une formation, l’administrateur doit cliquer sur le bouton Ajouter. Il est alors redirigé vers un formulaire d’ajout où il peut saisir les informations nécessaires.
+<img width="926" height="454" alt="image" src="https://github.com/user-attachments/assets/149c027c-6d8d-405e-b99e-68e4e27c2928" /><br>
+
+Pour modifier une formation, l’administrateur clique sur le bouton Modifier correspondant à la formation concernée. Il est ensuite redirigé vers un formulaire pré-rempli avec les informations actuelles de la formation, qu’il peut modifier avant de valider les changements.
+<img width="945" height="448" alt="image" src="https://github.com/user-attachments/assets/199ac25c-1e20-4221-9f38-8c7e8d1e9387" /><br>
+Pour supprimer une formation, l’administrateur doit cliquer sur le bouton Supprimer. Après validation d’un message de confirmation, la formation est supprimée et la liste des formations est automatiquement mise à jour.
+
+### Page Gestion des playlists :
+Cette page permet de gérer les playlists.
+Les fonctionnalités suivantes ont été ajoutées :
+•	Ajout de nouvelles playlist.<br>
+•	Modification des playlists existantes.<br>
+•	Suppression des playlists qui ne contient pas aucun formation.<br>
+<img width="945" height="428" alt="image" src="https://github.com/user-attachments/assets/203eae6e-f827-41cc-966e-d874f0a46e7f" />
+Pour ajouter une playlist, l’administrateur clique sur le bouton Ajouter et est redirigé vers un formulaire permettant de saisir les informations de la nouvelle playlist.
+<img width="945" height="290" alt="image" src="https://github.com/user-attachments/assets/d1a861e2-b89c-4325-b038-c57e1bc1d2f2" />
+Pour modifier une playlist, il clique sur le bouton Modifier associé à la playlist souhaitée, ce qui ouvre un formulaire pré-rempli avec les données actuelles, modifiables avant validation.
+<img width="945" height="278" alt="image" src="https://github.com/user-attachments/assets/b07ff5d9-73cd-4037-ba5d-a4c73217919b" />
+La suppression d’une playlist n’est possible que si celle-ci ne contient aucune formation. Si une playlist contient des formations, sa suppression est empêchée afin de garantir la cohérence des données.
+
+
+### Page Gestion des catégories :
+Cette page permet de gérer les categories.
+Les fonctionnalités suivantes ont été ajoutées :
+•	Ajout de nouvelles categorie.<br>
+•	Suppression des categories qui n'est pas ataché au aucune formation.<br>
+<img width="945" height="376" alt="image" src="https://github.com/user-attachments/assets/4bb0e009-4047-449f-a3b8-a22bf02a4901" /><br>
+L’ajout d’une catégorie se fait via un petit formulaire accompagné d’un bouton Ajouter.
+L’ajout n’est possible que si le nom saisi est unique dans la base de données et que le formulaire n’est pas vide, afin d’éviter les doublons et les entrées invalides.<br>
+La suppression d’une catégorie n’est possible que si celle-ci n’est attachée à aucune formation. Si une catégorie est liée à des formations, sa suppression est bloquée pour garantir l’intégrité des données.
+
+
 ## Test de l'application en local
 - Vérifier que Composer, Git et Wamserver (ou équivalent) sont installés sur l'ordinateur.
 - Télécharger le code et le dézipper dans www de Wampserver (ou dossier équivalent) puis renommer le dossier en "mediatekformation".<br>
