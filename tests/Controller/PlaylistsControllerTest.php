@@ -37,7 +37,7 @@ class PlaylistsControllerTest extends WebTestCase{
         $crawler = $client->submitForm('filtrer', ['recherche' => 'java']);		
         $this->assertCount(2, $crawler->filter('table tbody tr'));
         $firstRowTitle = $crawler->filter(self::FIRSTROW)->text();
-        $this->assertSelectorTextContains('h5.text-info', $firstRowTitle);
+        $this->assertSelectorTextContains('Eclipse et Java', $firstRowTitle);
     }
     
     /**

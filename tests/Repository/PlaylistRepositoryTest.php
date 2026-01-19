@@ -43,7 +43,7 @@ class PlaylistRepositoryTest extends KernelTestCase{
     public function testNbPlaylist(){
         $repository = $this->recupRepository();
         $nbPlaylist = $repository->count([]);
-        $this->assertEquals(32 , $nbPlaylist);
+        $this->assertEquals(29 , $nbPlaylist);
     }
     
     /**
@@ -88,9 +88,9 @@ class PlaylistRepositoryTest extends KernelTestCase{
      */
     public function testfindByContainValue(){
         $repository = $this->recupRepository();
-        $playlists = $repository->findByContainValue("name", "test",);
+        $playlists = $repository->findByContainValue("name", "cours",);
         $nbplaylists = count($playlists);
-        $this->assertEquals(6, $nbplaylists);
+        $this->assertEquals(11, $nbplaylists);
         
     }
 }

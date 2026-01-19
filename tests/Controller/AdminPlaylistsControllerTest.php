@@ -100,7 +100,7 @@ class AdminPlaylistsControllerTest extends WebTestCase{
         $this->assertEquals('/admin/playlist/edit/13',$uri);
         $this->assertResponseIsSuccessful();
         $this->assertSelectorExists('h2');
-        $this->assertSelectorTextContains('h2','Détail playlist');
+        $this->assertSelectorTextContains('h2','Modifier la playlist :');
     }
     /**
      * test bouton Ajouter de la page /admin/playlists

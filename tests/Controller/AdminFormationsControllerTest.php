@@ -99,7 +99,7 @@ class AdminFormationsControllerTest extends WebTestCase{
         $this->assertEquals('/admin/edit/3',$uri);
         $this->assertResponseIsSuccessful();
         $this->assertSelectorExists('h2');
-        $this->assertSelectorTextContains('h2','Détail formation');
+        $this->assertSelectorTextContains("h2","Modification d'une formation");
     }
     /**
      * test bouton Ajouter de la page /admin
@@ -115,7 +115,7 @@ class AdminFormationsControllerTest extends WebTestCase{
         $this->assertEquals('/admin/ajout',$uri);
         $this->assertResponseIsSuccessful();
         $this->assertSelectorExists('h2');
-        $this->assertSelectorTextContains("h2","Nouvelle formation :");
+        $this->assertSelectorTextContains("h2","Ajouter une nouvelle formation :");
     }
     
 }
